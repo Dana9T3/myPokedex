@@ -28,7 +28,7 @@ function App() {
 						<AllPokemon pokemon={pokemon} />
 					</Route>
 					<Route exact path="/:something*/stats">
-						<PokemonInfo />
+						<PokemonInfo pokemon={pokemon} />
 					</Route>
 					<Route exact path="/search">
 						<SearchedPokemon pokemon={pokemon} />
