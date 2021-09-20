@@ -1,15 +1,22 @@
-# Getting Started with Create React App
+# My Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to My Pokedex. This web app aims to replicate the in-game pokedex of a Pokemon game, allowing users to search for Pokemon they wish to find more details on such as stats (HP, Attack etc.), the evolution path of a Pokemon, and locations in-game the Pokemon can be found.
 
-## Available Scripts
+The app is in early development at this stage and so far users can search all Pokemon and select one they wish to view, or if the know the name of a Pokemon, you can search for it using the search bar. Upon selecting a pokemon you will be redirected to their page which will show all stats, locations and strengths/ weaknesses for the selected pokemon.
 
-In the project directory, you can run:
+I aim to implement a chart feature to show stats on a radar chart which would make for better visualistaion of the data. I also aim to add maps to highlight exactly where a Pokemon can be found in-game.
+
+# How to run MyPokedex
+
+### Cloning
+
+
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Currently the app is not hosted but can be run by cloning this repo and running `npm start` in the terminal. This will open to app in development mode but will run just as it would in production.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
