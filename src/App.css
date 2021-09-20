@@ -43,15 +43,53 @@
 	float: right;
 }
 
-/*Pokemon List*/
+/*Search Options*/
 
-.pokemonGrid {
+.searchOptions {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	border-style: solid;
+	border-color: rgb(28, 99, 139);
+	background-color: #8ad2ee;
+	border-width: 2px;
+	border-radius: 30px;
+	padding: 10px;
+	margin: 20px;
+}
+
+.searchOptions li {
+	border-color: rgb(28, 99, 139);
+	background-color: white;
+	border-width: 2px;
+	border-radius: 10px;
+	border-style: solid;
+	padding: 10px;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 70px;
+	list-style: none;
+}
+
+/*All Pokemon List*/
+
+.pokemonSlot {
+	margin: 20px;
+	padding-bottom: 20px;
+	background-color: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	border-radius: 30px;
+}
+
+.pokemonSlot p {
+	color: black;
+	text-decoration: none !important;
 }
 
 .pokemonCard {
-	padding-top: 30px;
+	padding-top: 10px;
 	/* border-radius: 10px;
 	border-style: solid;
 	border-width: 2px;
@@ -63,21 +101,22 @@
 
 .pokemonCard p {
 	font-size: large;
-	padding: 7px;
-	margin: 15px;
-	margin-top: 0px;
+	padding: 10px;
+	margin: auto;
+	margin-top: 6px;
 	background-color: white;
 	text-decoration: black;
-	border-style: solid;
+	/* border-style: solid;
 	border-width: 2px;
 	border-color: rgb(28, 99, 139);
-	border-radius: 30px;
+	border-radius: 10px; */
+	width: fit-content;
 }
 
 .pokemonCard img {
-	background-color: white;
+	/* background-color: white;
 	border-radius: 30px;
-	padding: 20px;
+	padding: 20px; */
 }
 
 /*Pokemon Stats*/
@@ -89,6 +128,35 @@
 
 .pokemonGrid {
 	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	background-color: #44b8e6;
+	border-width: 2px;
+	border-radius: 30px;
+}
+
+.pokemonGrid p {
+	color: black;
+	text-decoration: none !important;
+}
+
+.pokemonGrid img {
+	padding: 30px;
+	margin: auto;
+	margin-top: 30px;
+	/* border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	border-radius: 30px; */
+	height: auto;
+	width: auto;
+	background-color: white;
+}
+
+.singlePokemonGrid {
+	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	border-style: solid;
 	border-width: 2px;
@@ -98,7 +166,12 @@
 	border-radius: 30px;
 }
 
-.pokemonGrid img {
+.pokemonContainer p {
+	color: black;
+	text-decoration: none !important;
+}
+
+.pokemonContainer img {
 	padding: 30px;
 	margin: auto;
 	margin-top: 30px;
@@ -111,7 +184,7 @@
 	background-color: white;
 }
 
-.pokemonGrid li {
+.pokemonContainer li {
 	padding: 3px;
 	list-style: none;
 }
@@ -167,4 +240,20 @@
 	padding: 3px;
 	list-style: none;
 	font-size: medium;
+}
+
+.pokemonLocationDetails {
+	padding: 20px;
+	display: flex;
+	flex-flow: column;
+	text-align: left;
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	border-radius: 30px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }

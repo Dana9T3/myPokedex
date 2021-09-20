@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
-//import { Radar } from "react-chartjs-2";
+import RadarChart from "./RadarChart";
 
 function PokemonInfo() {
 	const [damageRelations, setDamageRelations] = useState({});
@@ -29,12 +29,12 @@ function PokemonInfo() {
 		fetchLocation();
 	}, [poke.id]);
 
-	console.log(encounterLocation);
+	//console.log(encounterLocation);
 
 	return (
 		<div className="pokemonContainer">
 			<h1 className="pokeName">{poke.name.toUpperCase()}</h1>
-			<div className="pokemonGrid">
+			<div className="singlePokemonGrid">
 				<img src={poke.sprites.front_default} alt={poke.name}></img>
 				<img src={poke.sprites.front_shiny} alt={poke.name}></img>
 				<p>Default Sprite</p>
@@ -52,11 +52,19 @@ function PokemonInfo() {
 							return (
 								<div>
 									<li>
-										{stat.stat.name.toUpperCase()}: {stat.base_stat}
+										{stat.stat.name.replace(/-/g, " ").toUpperCase()}:{" "}
+										{stat.base_stat}
 									</li>
 								</div>
 							);
 						})}
+						<button
+							onClick={() => {
+								<RadarChart pokeStats={poke.stats} />;
+							}}
+						>
+							See Stats on Chart
+						</button>
 					</div>
 				) : (
 					<p>Loading...</p>
@@ -65,15 +73,28 @@ function PokemonInfo() {
 				{damageRelations.damage_relations ? (
 					<div className="pokemonInfo2">
 						<h2>Damage Relations</h2>
-						<h3>Strengths</h3>
-						{damageRelations.damage_relations.double_damage_to.map((stat) => {
-							return <li>{stat.name.toUpperCase()}</li>;
-						})}
-						<h3>Weaknesses</h3>
-						{damageRelations.damage_relations.double_damage_from.map((stat) => {
-							return <li>{stat.name.toUpperCase()}</li>;
-						})}
-						<h3>Immune Against</h3>
+						<h3>Strengths 💪</h3>
+						{damageRelations.damage_relations.double_damage_to.length === 0 ? (
+							<li>NONE</li>
+						) : (
+							damageRelations.damage_relations.double_damage_to.map((stat) => {
+								return <li>{stat.name.toUpperCase()}</li>;
+							})
+						)}
+
+						<h3>Weaknesses ☠️</h3>
+						{damageRelations.damage_relations.double_damage_from.length ===
+						0 ? (
+							<li>NONE</li>
+						) : (
+							damageRelations.damage_relations.double_damage_from.map(
+								(stat) => {
+									return <li>{stat.name.toUpperCase()}</li>;
+								}
+							)
+						)}
+
+						<h3>Immune Against ❌</h3>
 						{damageRelations.damage_relations.no_damage_from.length === 0 ? (
 							<li>NONE</li>
 						) : (
@@ -87,11 +108,34 @@ function PokemonInfo() {
 				)}
 			</div>
 			<div className="locationContainer">
-				<h2>Locations</h2>
+				<h2>Locations 🏡</h2>
 				<div className="locationsGrid">
 					{encounterLocation.map((loc) => {
+						// if (encounterLocation === undefined) {
+						// 	return (
+						// 		<div className="pokemonLocationDetails">
+						// 			<p>This Pokemon cannot be caught in the wild.</p>
+						// 		</div>
+						// 	);
+						// } else
 						return (
-							<p>{loc.location_area.name.replace(/-/g, " ").toUpperCase()}</p>
+							<div className="pokemonLocationDetails">
+								<h4>
+									{loc.location_area.name.replace(/-/g, " ").toUpperCase()}
+								</h4>
+								<p>
+									Version:{" "}
+									{loc.version_details[0].version.name.replace(/-/g, " ")}
+								</p>
+								<p>
+									Chance of Encounter:{" "}
+									{loc.version_details[0].encounter_details[0].chance}%
+								</p>
+								<p>
+									Max Level:{" "}
+									{loc.version_details[0].encounter_details[0].max_level}
+								</p>
+							</div>
 						);
 					})}
 				</div>

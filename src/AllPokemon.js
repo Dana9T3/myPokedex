@@ -18,22 +18,36 @@ function AllPokemon({ pokemon }) {
 	}, [pokemon]);
 
 	return (
-		<div className="pokemonGrid">
-			{pokemonStats.map((poke) => {
-				return (
-					<Link
-						to={{
-							pathname: `${poke.name}/stats`,
-							state: poke,
-						}}
-					>
-						<div className="pokemonCard" key={poke.name}>
-							<img src={poke.sprites.front_default} alt={poke.name} />
-							<p>{poke.name}</p>
+		<div>
+			<p>Filter by</p>
+			<div className="searchOptions">
+				<li>Type</li>
+				<li>HP</li>
+				<li>Attack</li>
+				<li>Defense</li>
+				<li>Speed</li>
+				<li>Location</li>
+			</div>
+
+			<div className="pokemonGrid">
+				{pokemonStats.map((poke) => {
+					return (
+						<div className="pokemonSlot">
+							<Link
+								to={{
+									pathname: `${poke.name}/stats`,
+									state: poke,
+								}}
+							>
+								<div className="pokemonCard" key={poke.name}>
+									<img src={poke.sprites.front_default} alt={poke.name} />
+									<p>{poke.name.toUpperCase()}</p>
+								</div>
+							</Link>
 						</div>
-					</Link>
-				);
-			})}
+					);
+				})}
+			</div>
 		</div>
 	);
 }

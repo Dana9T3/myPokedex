@@ -25,17 +25,19 @@ const SearchedPokemon = ({ pokemon }) => {
 		<div className="pokemonGrid">
 			{searchedPokemon.map((poke) => {
 				return (
-					<Link
-						to={{
-							pathname: `${poke.name}/stats`,
-							state: poke,
-						}}
-					>
-						<div className="pokemonCard" key={poke.name}>
-							<img src={poke.sprites.front_default} alt={poke.name} />
-							<p>{poke.name}</p>
-						</div>
-					</Link>
+					<div className="pokemonSlot">
+						<Link
+							to={{
+								pathname: `${poke.name}/stats`,
+								state: poke,
+							}}
+						>
+							<div className="pokemonCard" key={poke.name}>
+								<img src={poke.sprites.front_default} alt={poke.name} />
+								<p>{poke.name}</p>
+							</div>
+						</Link>
+					</div>
 				);
 			})}
 		</div>
