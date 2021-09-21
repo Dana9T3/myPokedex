@@ -135,6 +135,7 @@
 	background-color: #44b8e6;
 	border-width: 2px;
 	border-radius: 30px;
+	margin: 20px;
 }
 
 .pokemonGrid p {
@@ -164,6 +165,7 @@
 	background-color: #44b8e6;
 	border-width: 2px;
 	border-radius: 30px;
+	margin: 20px;
 }
 
 .pokemonContainer p {
@@ -187,6 +189,19 @@
 .pokemonContainer li {
 	padding: 3px;
 	list-style: none;
+}
+
+/*pokemonEntry*/
+
+.pokemonEntry {
+	font-size: larger;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	background-color: #44b8e6;
+	border-width: 2px;
+	border-radius: 30px;
+	margin: 20px;
 }
 
 .pokemonInfo1 {
@@ -216,6 +231,20 @@
 	border-radius: 30px;
 	margin-right: 20px;
 	margin-bottom: 20px;
+}
+
+/*Evolutions*/
+
+.evoGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(28, 99, 139);
+	background-color: #44b8e6;
+	border-width: 2px;
+	border-radius: 30px;
+	margin: 20px;
 }
 
 /*locations*/

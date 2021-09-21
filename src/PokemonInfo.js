@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import RadarChart from "./RadarChart";
+import PokedexEntry from "./PokedexEntry";
+import PokemonSpecies from "./PokemonSpecies";
 
 function PokemonInfo() {
 	const [damageRelations, setDamageRelations] = useState({});
 	const [encounterLocation, setEncounterLocation] = useState([]);
+	const [open, setOpen] = useState(false);
+
 	const location = useLocation();
 	const poke = location.state;
 
@@ -29,11 +33,14 @@ function PokemonInfo() {
 		fetchLocation();
 	}, [poke.id]);
 
-	//console.log(encounterLocation);
+	const toggleOpen = () => {
+		setOpen((currOpen) => !currOpen);
+	};
 
 	return (
 		<div className="pokemonContainer">
 			<h1 className="pokeName">{poke.name.toUpperCase()}</h1>
+			<PokedexEntry pokeId={poke.id} />
 			<div className="singlePokemonGrid">
 				<img src={poke.sprites.front_default} alt={poke.name}></img>
 				<img src={poke.sprites.front_shiny} alt={poke.name}></img>
@@ -60,11 +67,12 @@ function PokemonInfo() {
 						})}
 						<button
 							onClick={() => {
-								<RadarChart pokeStats={poke.stats} />;
+								toggleOpen();
 							}}
 						>
 							See Stats on Chart
 						</button>
+						{open ? <RadarChart pokeStats={poke.stats} /> : null}
 					</div>
 				) : (
 					<p>Loading...</p>
@@ -73,7 +81,7 @@ function PokemonInfo() {
 				{damageRelations.damage_relations ? (
 					<div className="pokemonInfo2">
 						<h2>Damage Relations</h2>
-						<h3>Strengths 💪</h3>
+						<h3>Strengths</h3>
 						{damageRelations.damage_relations.double_damage_to.length === 0 ? (
 							<li>NONE</li>
 						) : (
@@ -82,7 +90,7 @@ function PokemonInfo() {
 							})
 						)}
 
-						<h3>Weaknesses ☠️</h3>
+						<h3>Weaknesses</h3>
 						{damageRelations.damage_relations.double_damage_from.length ===
 						0 ? (
 							<li>NONE</li>
@@ -94,7 +102,7 @@ function PokemonInfo() {
 							)
 						)}
 
-						<h3>Immune Against ❌</h3>
+						<h3>Immune Against</h3>
 						{damageRelations.damage_relations.no_damage_from.length === 0 ? (
 							<li>NONE</li>
 						) : (
@@ -107,8 +115,9 @@ function PokemonInfo() {
 					<p>Loading...</p>
 				)}
 			</div>
+			<PokemonSpecies pokeId={poke.id} />
 			<div className="locationContainer">
-				<h2>Locations 🏡</h2>
+				<h2>Locations</h2>
 				<div className="locationsGrid">
 					{encounterLocation.map((loc) => {
 						// if (encounterLocation === undefined) {

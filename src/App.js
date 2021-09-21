@@ -23,6 +23,20 @@ function App() {
 			<div className="App">
 				<SearchBar pokemon={pokemon} />
 				<h1>Welcome to My Pokedex</h1>
+				<p>
+					This is a recreational project of mine aimed to enable users to search
+					for any Pokemon they desire and find all the information they require
+					such as type, location in game and stats.
+					<br />
+					<br />
+					At this stage, users can:
+					<li>View all Generation 1 Pokemon</li>
+					<li>
+						Click on Pokemon and view relevant statistics for the selected
+						Pokemon
+					</li>
+					<li>Search for specific generation 1 Pokemon using the search bar</li>
+				</p>
 				<Switch>
 					<Route exact path="/">
 						<AllPokemon pokemon={pokemon} />

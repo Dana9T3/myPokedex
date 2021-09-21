@@ -9,31 +9,15 @@ function SearchBar({ pokemon }) {
 		setQuery(event.target.value);
 	};
 
-	// const handleKeyPress = (event) => {
-	// 	if (event.keyCode === 13) {
-	// 		handleSubmit();
-	// 	}
-	// };
-
-	const handleSubmit = () => {
-		// const matchedPokemon = pokemon.map((poke) => {
-		// 	if (poke.name.includes(query)) {
-		// 		return poke;
-		// 	}
-		// });
-		//<SearchedPokemon />;
-	};
-
 	return (
 		<div className="topnav">
 			<Link to="/">Home</Link>
 			<Link to="/types">Types</Link>
 			<Link to="/gen">Gen</Link>
-			<form onSubmit={handleSubmit}>
+			<form>
 				<input
 					type="text"
 					onChange={searchQuery}
-					//onKeyPress={handleKeyPress}
 					placeholder="Search Pokemon..."
 				></input>
 				<button>

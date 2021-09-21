@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 
 function AllPokemon({ pokemon }) {
 	const [pokemonStats, setPokemonStats] = useState([]);
+	const [open, setOpen] = useState(false);
+
+	const toggleOpen = () => {
+		setOpen((currOpen) => !currOpen);
+	};
 
 	useEffect(() => {
 		async function fetchData() {
@@ -19,35 +24,34 @@ function AllPokemon({ pokemon }) {
 
 	return (
 		<div>
-			<p>Filter by</p>
-			<div className="searchOptions">
-				<li>Type</li>
-				<li>HP</li>
-				<li>Attack</li>
-				<li>Defense</li>
-				<li>Speed</li>
-				<li>Location</li>
-			</div>
-
-			<div className="pokemonGrid">
-				{pokemonStats.map((poke) => {
-					return (
-						<div className="pokemonSlot">
-							<Link
-								to={{
-									pathname: `${poke.name}/stats`,
-									state: poke,
-								}}
-							>
-								<div className="pokemonCard" key={poke.name}>
-									<img src={poke.sprites.front_default} alt={poke.name} />
-									<p>{poke.name.toUpperCase()}</p>
-								</div>
-							</Link>
-						</div>
-					);
-				})}
-			</div>
+			<button
+				onClick={() => {
+					toggleOpen();
+				}}
+			>
+				Show All Pokemon
+			</button>
+			{open ? (
+				<div className="pokemonGrid">
+					{pokemonStats.map((poke) => {
+						return (
+							<div className="pokemonSlot">
+								<Link
+									to={{
+										pathname: `${poke.name}/stats`,
+										state: poke,
+									}}
+								>
+									<div className="pokemonCard" key={poke.name}>
+										<img src={poke.sprites.front_default} alt={poke.name} />
+										<p>{poke.name.toUpperCase()}</p>
+									</div>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			) : null}
 		</div>
 	);
 }
