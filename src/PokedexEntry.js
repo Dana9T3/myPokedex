@@ -19,7 +19,7 @@ const PokedexEntry = ({ pokeId }) => {
 					{pokemonData.flavor_text_entries.map((entry) => {
 						if (entry.language.name === "en" && entry.version.name === "red") {
 							return <p>{entry.flavor_text}</p>;
-						}
+						} else return null;
 					})}
 				</div>
 			) : (
