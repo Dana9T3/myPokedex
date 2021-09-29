@@ -3,7 +3,7 @@ import fetchSpeciesData from "./util-functions/fetchPokeSpecies";
 
 const PokemonSpecies = ({ pokeId }) => {
 	const [pokemonData, setPokemonData] = useState({});
-	const [evolutonChainData, setEvolutionChainData] = useState({});
+	//const [evolutonChainData, setEvolutionChainData] = useState({});
 	//const evoChainUrl = pokemonData.evolution_chain.url;
 	useEffect(() => {
 		async function useUtil() {
@@ -13,16 +13,16 @@ const PokemonSpecies = ({ pokeId }) => {
 		useUtil();
 	}, [pokeId]);
 
-	useEffect(() => {
-		async function fetchSpeciesData() {
-			const fetchedStats = await fetch(pokemonData.evolution_chain.url).then(
-				(res) => res.json()
-			);
+	// useEffect(() => {
+	// 	async function fetchSpeciesData() {
+	// 		const fetchedStats = await fetch(pokemonData.evolution_chain.url).then(
+	// 			(res) => res.json()
+	// 		);
 
-			setEvolutionChainData(fetchedStats);
-		}
-		fetchSpeciesData();
-	}, [pokeId]);
+	// 		setEvolutionChainData(fetchedStats);
+	// 	}
+	// 	fetchSpeciesData();
+	// }, [pokeId]);
 
 	console.log(pokemonData.evolution_chain);
 

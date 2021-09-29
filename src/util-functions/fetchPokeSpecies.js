@@ -6,6 +6,6 @@ async function fetchSpeciesData(id) {
 	return fetchedSpeciesData;
 }
 
-async function fetchEvoChain() {}
+//async function fetchEvoChain() {}
 
 export default fetchSpeciesData;
