@@ -115,7 +115,7 @@ function PokemonInfo() {
 					<p>Loading...</p>
 				)}
 			</div>
-			<PokemonSpecies pokeId={poke.id} />
+			<PokemonSpecies pokeId={poke.id} poke={poke} />
 			<div className="locationContainer">
 				<h2>Locations</h2>
 				<div className="locationsGrid">

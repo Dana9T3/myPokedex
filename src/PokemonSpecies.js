@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import fetchSpeciesData from "./util-functions/fetchPokeSpecies";
+import fetchEvoChain from "./util-functions/fetchEvoChain";
 
-const PokemonSpecies = ({ pokeId }) => {
+const PokemonSpecies = ({ pokeId, poke }) => {
 	const [pokemonData, setPokemonData] = useState({});
-	//const [evolutonChainData, setEvolutionChainData] = useState({});
-	//const evoChainUrl = pokemonData.evolution_chain.url;
+	const [evolutonChainData, setEvolutionChainData] = useState({});
+	const [evoChainUrl, setEvoChainUrl] = useState("");
+
 	useEffect(() => {
 		async function useUtil() {
 			const data = await fetchSpeciesData(pokeId);
 			setPokemonData(data);
+			setEvoChainUrl(data.evolution_chain.url);
 		}
 		useUtil();
-	}, [pokeId]);
+		async function fetchEvoData() {
+			const data = await fetchEvoChain(evoChainUrl);
+
+			setEvolutionChainData(data);
+		}
+		fetchEvoData();
+	}, [pokeId, evoChainUrl]);
 
 	// useEffect(() => {
-	// 	async function fetchSpeciesData() {
-	// 		const fetchedStats = await fetch(pokemonData.evolution_chain.url).then(
-	// 			(res) => res.json()
-	// 		);
+	// }, [evoChainUrl]);
 
-	// 		setEvolutionChainData(fetchedStats);
-	// 	}
-	// 	fetchSpeciesData();
-	// }, [pokeId]);
-
-	console.log(pokemonData.evolution_chain);
+	// console.log("chain", evolutonChainData.chain["species"].name ? true : false);
 
 	return (
 		<div>

@@ -1,4 +1,4 @@
-// import { Radar } from "react-chartjs-2";
+import { Radar } from "chart.js";
 import React from "react";
 
 const RadarChart = ({ pokeStats }) => {
@@ -6,7 +6,7 @@ const RadarChart = ({ pokeStats }) => {
 
 	return (
 		<div>
-			<h3>...Chart here...</h3>
+			<Radar />
 		</div>
 	);
 };
