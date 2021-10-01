@@ -6,6 +6,7 @@ const PokemonSpecies = ({ pokeId, poke }) => {
 	const [pokemonData, setPokemonData] = useState({});
 	const [evolutonChainData, setEvolutionChainData] = useState({});
 	const [evoChainUrl, setEvoChainUrl] = useState("");
+	const [evolutions, setEvolutions] = useState([]);
 
 	useEffect(() => {
 		async function useUtil() {
@@ -22,10 +23,7 @@ const PokemonSpecies = ({ pokeId, poke }) => {
 		fetchEvoData();
 	}, [pokeId, evoChainUrl]);
 
-	// useEffect(() => {
-	// }, [evoChainUrl]);
-
-	// console.log("chain", evolutonChainData.chain["species"].name ? true : false);
+	//console.log("chain", evolutonChainData);
 
 	return (
 		<div>

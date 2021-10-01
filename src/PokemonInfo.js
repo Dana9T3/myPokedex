@@ -72,7 +72,9 @@ function PokemonInfo() {
 						>
 							See Stats on Chart
 						</button>
-						{open ? <RadarChart pokeStats={poke.stats} /> : null}
+						{open ? (
+							<RadarChart pokeStats={poke.stats} pokeName={poke.name} />
+						) : null}
 					</div>
 				) : (
 					<p>Loading...</p>

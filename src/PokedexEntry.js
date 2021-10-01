@@ -15,7 +15,7 @@ const PokedexEntry = ({ pokeId }) => {
 	return (
 		<div>
 			{pokemonData.flavor_text_entries ? (
-				<div className="pokemonEntry">
+				<div className="pokemonEntry" key={pokemonData.id}>
 					{pokemonData.flavor_text_entries.map((entry) => {
 						if (entry.language.name === "en" && entry.version.name === "red") {
 							return <p>{entry.flavor_text}</p>;
