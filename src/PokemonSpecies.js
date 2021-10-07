@@ -6,7 +6,9 @@ const PokemonSpecies = ({ pokeId, poke }) => {
 	const [pokemonData, setPokemonData] = useState({});
 	const [evolutonChainData, setEvolutionChainData] = useState({});
 	const [evoChainUrl, setEvoChainUrl] = useState("");
-	const [evolutions, setEvolutions] = useState([]);
+	//const [evolutions, setEvolutions] = useState([]);
+
+	console.log(pokemonData, evolutonChainData);
 
 	useEffect(() => {
 		async function useUtil() {
